@@ -16,7 +16,7 @@
 
 <style lang='stylus' rel='stylesheet/stylus' scoped>
   #appContainer
-    width 100vh
+    width 100vw
     height 100vh
-    background-color skyblue 
+    background-color #eee 
 </style>
