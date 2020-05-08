@@ -100,6 +100,51 @@
 				<div class="bigPromotion">
 					<a href="javascript:;"></a>
 				</div>
+				<div class="welfare">
+					<div class="title">
+						<span class="text">新人专享礼</span>
+					</div>
+					<div class="content">
+						<div class="left">
+							<p class="name">新人专享礼包</p>
+							<div class="imgWrap">
+								<img src="https://yanxuan.nosdn.127.net/352b0ea9b2d058094956efde167ef852.png" alt="">
+							</div>
+						</div>
+						<div class="right">
+							<div class="r-top">
+								<div class="cnt">
+									<div class="c-title">福利社</div>
+									<div class="subtitle">今日特价</div>
+								</div>
+								<div class="picWrap">
+									<div class="imgWrap">
+										<img src="https://yanxuan-item.nosdn.127.net/da045b2d0cfad5ea873618205b759c40.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
+									</div>
+									<div class="discount">
+										<div class="line1">￥69</div>
+										<div class="line2">￥79</div>
+									</div>
+								</div>
+							</div>
+							<div class="r-bottom">
+									<div class="cnt">
+									<div class="c-title">新人拼团</div>
+									<div class="tag">1元起包邮</div>
+								</div>
+								<div class="picWrap">
+									<div class="imgWrap">
+										<img src="https://yanxuan-item.nosdn.127.net/431a09a43914483f4d70aeda8ecb8a59.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
+									</div>
+									<div class="discount">
+										<div class="line1">￥9.9</div>
+										<div class="line2">￥16.9</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
     </div>
 </template>
 
@@ -168,6 +213,7 @@
 			/deep/.swiper-pagination-customs-active
 				opacity 1
 		.servicePolicy
+			box-sizing border-box
 			height 72px
 			padding 0 30px	
 			background-color #fff
@@ -221,4 +267,120 @@
 				height 240px
 				background-image url('https://yanxuan.nosdn.127.net/7db5ad89be165b82b6a3e261029d0122.gif?imageView&quality=75')
 				background-size 100% 100%
+		.welfare
+			box-sizing border-box
+			width 100%
+			height 558px
+			margin 20px 0
+			padding-bottom 30px
+			background-color #fff
+			.title
+				height 90px
+				padding 0 30px
+				text-align center
+				.text
+					font-size 32px
+					color #333
+					display inline-block
+					line-height 90px
+					position relative
+					&:before,&:after
+						content ''
+						width 24px
+						height 3px
+						position absolute
+						top 44px
+						background-color #333
+					&:before
+						left -40px
+					&:after
+						right -40px
+
+			.content
+				height 438px
+				padding-left 30px
+				.left
+					width 343px 
+					height 434px
+					float left
+					background-color #F9E9CF
+					border-radius 4px
+					margin-right 4px
+					.name
+						height 78px
+						box-sizing border-box
+						line-height 48px
+						font-family PingFangSC-Medium
+						font-size 32px
+						padding 30px 0 0 30px
+					.imgWrap
+						width 258px 
+						height 257px
+						margin 60px auto
+				.right 
+					width 343px 
+					height 438px
+					float left
+					.r-top,.r-bottom
+						height 215px
+						background-color #FBE2D3
+						border-radius 4px
+						margin-bottom 4px
+						box-sizing border-box
+						padding 20px 0 0 30px
+						position relative
+						.cnt
+							.c-title
+								color #333
+								font-size 32px
+								line-height 48px
+							.subtitle
+								color #7F7F7F
+								font-size 24px
+								line-height 36px
+						.picWrap
+							width 200px
+							height 200px
+							position absolute
+							right 0
+							bottom 0
+							.discount
+								box-sizing border-box
+								padding-top 5px
+								width 80px
+								height 80px
+								
+								background-color #F59524
+								border-radius 50%
+								opacity .8
+								text-align center
+								color #fff
+								position absolute
+								right 40px
+								top 0
+
+								.line1
+									font-size 24px
+									line-height 36px
+								.line2
+									font-size 18px
+									line-height 30px
+									margin-top -5px
+									text-decoration line-through
+					.r-bottom
+						height 215px
+						background-color #FFECC2
+						border-radius 4px
+						margin-bottom 4px
+						.cnt
+							.tag
+								display inline-block
+								height 32px
+								line-height 32px
+								border-radius 4px
+								padding 0 10px
+								color #fff
+								background-color #cbb693
+								font-size 22px
+
 </style>

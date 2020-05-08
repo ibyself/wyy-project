@@ -38,10 +38,12 @@
 		position fixed
 		left 0
 		bottom 0
+		z-index 100
 		width 100%
 		height 98px
 		background-color white
 		display flex
+		border-top 1px solid #d9d9d9
 		.item
 			box-sizing border-box
 			width 20%
