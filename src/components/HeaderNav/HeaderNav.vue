@@ -98,11 +98,11 @@
 <style lang='stylus' rel='stylesheet/stylus' scoped>
   #headerContainer
     height 148px
-    .header
-      position fixed 
-      left 0
-      top 0
-      z-index 2
+    position fixed 
+    left 0
+    top 0
+    z-index 2
+    .header     
       .headerSearch
         padding 16px 30px
         background-color #fff
