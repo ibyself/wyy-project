@@ -245,9 +245,9 @@
 					</div>
 				</div>
 				<!-- 人气推荐 -->
-				<!-- <div class="recommend">
+				<div class="recommend">
 					<div class="rec-title">
-						<div class="left"></div>
+						<div class="left">人气推荐</div>
 						<a href="javascript:;" class="right">
 							更多
 							<i class="r-icon"></i>
@@ -257,20 +257,49 @@
 						<div class="rec-big">
 							<a href="javascript:;" class="bigWrap">
 								<img src="https://yanxuan-item.nosdn.127.net/02dd07dbee4575a71afa30fd680a6ec7.png?quality=75&type=webp&imageView&thumbnail=280x280" alt="" class="big-left">
-								<div class="big-right"></div>
+								<div class="big-right">
+									<p class="r-title">
+										<span class="text">母亲节特惠</span>
+									</p>
+									<p class="bigTitle">15分钟快速救脸，射频多功能美容仪</p>
+									<p class="smallTitle">掌心里的“美容院”</p>
+									<p class="big-price">￥759</p>
+								</div>
 							</a>
 						</div>
 						<div class="rec-small">
 							<ul class="smList">
 								<li class="smItem">
-									<img src="https://yanxuan-item.nosdn.127.net/eb5aaec3178da93222aeca4b7fcaf757.png?type=webp&imageView&quality=65&thumbnail=330x330" alt="" class="itemImg">
+									<div class="imgWrap">
+										<img src="https://yanxuan-item.nosdn.127.net/eb5aaec3178da93222aeca4b7fcaf757.png?type=webp&imageView&quality=65&thumbnail=330x330" alt="" class="itemImg">
+									</div>
 									<p class="itemTitle">告别啃食尴尬，秘制无骨凤爪...</p>
-									<div class="itemPrice"></div>
+									<div class="itemPrice">
+										<span class="text">￥22</span>
+									</div>
+								</li>
+								<li class="smItem">
+									<div class="imgWrap">
+										<img src="https://yanxuan-item.nosdn.127.net/eb5aaec3178da93222aeca4b7fcaf757.png?type=webp&imageView&quality=65&thumbnail=330x330" alt="" class="itemImg">
+									</div>
+									<p class="itemTitle">告别啃食尴尬，秘制无骨凤爪...</p>
+									<div class="itemPrice">
+										<span class="text">￥22</span>
+									</div>
+								</li>
+								<li class="smItem">
+									<div class="imgWrap">
+										<img src="https://yanxuan-item.nosdn.127.net/eb5aaec3178da93222aeca4b7fcaf757.png?type=webp&imageView&quality=65&thumbnail=330x330" alt="" class="itemImg">
+									</div>
+									<p class="itemTitle">告别啃食尴尬，秘制无骨凤爪...</p>
+									<div class="itemPrice">
+										<span class="text">￥22</span>
+									</div>
 								</li>
 							</ul>
 						</div>
 					</div>
-				</div> -->
+				</div>
 			</div>
 		</div>
 	</div>
@@ -530,6 +559,7 @@
 										font-size 22px
 				.categorySellWell
 					background-color #fff
+					margin-bottom 20px
 					.hot-title
 						height 100px
 						padding 0 30px
@@ -587,6 +617,104 @@
 									img
 										width 120px
 										height 120px	
-				// .recommend
+				.recommend
+					.rec-title
+						padding 0 30px
+						height 90px
+						background-color #fff
+						>.left	
+							font-size 32px
+							color #333
+							float left
+							line-height 90px
+						>.right 
+							float right
+							display block
+							font-size 28px
+							color #333
+							line-height 90px
+							vertical-align middle
+							.r-icon
+								display inline-block
+								width 13px 
+								height 23px
+								margin-left 4px
+								vertical-align middle
+								background-image url('https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/index-titleArrow-caab97997c.png?imageView&type=webp')
+								background-size 100% 100%
+					.rec-content
+						background-color #fff
+						.rec-big
+							padding 0 30px 20px
+							.bigWrap
+								display flex
+								background-color #FEF0DF
+								align-items center								
+								
+								img
+									width 280px
+									height 280px
+									margin-right 30px
+								.big-right
+									width 350px
+									height 162px
+									.r-title
+										width 350px
+										height 33px
+										margin-bottom 9px
+										.text
+											color #DD1A21
+											background rgba(255,255,255,.9)
+											font-size 18px
+											margin-bottom 5px
+											padding 0 8px
+											line-height 30px
+											border 1px solid red
+											border-radius 15px
+									.bigTitle
+										color #333
+										font-size 28px
+										height 42px
+										line-height 42px
+										width 350px
+										overflow hidden
+										text-overflow ellipsis
+										white-space nowrap
+									.smallTitle
+										color #7f7f7f
+										font-size 24px
+										line-height 36px
+										overflow hidden
+										text-overflow ellipsis
+										white-space nowrap
+									.big-price
+										font-size 28px
+										color red
+						.rec-small	
+							padding-left .13333rem
+							.smList
+								display flex
+								.smItem
+									margin-left 20px
+									padding-bottom 13px
+									width 216px
+									.imgWrap
+										background-color #f5f5f5
+										.itemImg
+											width 100%
+											height 100%	
+									.itemTitle
+										font-size 24px
+										height 72px
+										color #333	
+										line-height .48rem	
+										text-overflow ellipsis
+										overflow hidden
+										white-space normal	
+									.itemPrice
+										height 48px
+										line-height 48px
+										>.text
+											color red
 
-</style>
+</style>		
