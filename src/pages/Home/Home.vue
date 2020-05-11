@@ -300,6 +300,67 @@
 						</div>
 					</div>
 				</div>
+				<!-- 购物指南 -->
+				<div class="shopGuide">
+					<ul class="guideList">
+						<li class="guideItem">
+							<div class="guideTitle">
+								<div class="big">严选超市</div>
+								<div class="small">10元凑好物</div>
+							</div>
+							<div class="imgList">
+								<img src="https://yanxuan-item.nosdn.127.net/758b098102d7b82ccabcfd95b25b02c3.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
+								<img src="https://yanxuan-item.nosdn.127.net/cfd0fec5e70ca09d4c0b7492dba26f2e.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
+							</div>
+						</li>
+						<li class="guideItem">
+							<div class="guideTitle">
+								<div class="big">严选超市</div>
+								<div class="small">10元凑好物</div>
+							</div>
+							<div class="imgList">
+								<img src="https://yanxuan-item.nosdn.127.net/758b098102d7b82ccabcfd95b25b02c3.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
+								<img src="https://yanxuan-item.nosdn.127.net/cfd0fec5e70ca09d4c0b7492dba26f2e.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
+							</div>
+						</li>
+						<li class="guideItem">
+							<div class="guideTitle">
+								<div class="big">严选超市</div>
+								<div class="small">10元凑好物</div>
+							</div>
+							<div class="imgList">
+								<img src="https://yanxuan-item.nosdn.127.net/758b098102d7b82ccabcfd95b25b02c3.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
+								<img src="https://yanxuan-item.nosdn.127.net/cfd0fec5e70ca09d4c0b7492dba26f2e.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
+							</div>
+						</li>
+						<li class="guideItem">
+							<div class="guideTitle">
+								<div class="big">严选超市</div>
+								<div class="small">10元凑好物</div>
+							</div>
+							<div class="imgList">
+								<img src="https://yanxuan-item.nosdn.127.net/758b098102d7b82ccabcfd95b25b02c3.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
+								<img src="https://yanxuan-item.nosdn.127.net/cfd0fec5e70ca09d4c0b7492dba26f2e.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- 回到顶部 -->
+				<div class="toTop">
+					<i class="tp-icon"></i>
+				</div>
+				<!-- 版权 -->
+				<div class="ft-wrap">
+					<div class="ft-content">
+						<div class="btns">
+							<a href="javascript:;">下载APP</a>
+							<a href="javascript:;">电脑版</a>
+						</div>
+						<p class="copyright">
+							网易公司版权所有 © 1997-<br>食品经营许可证：JY13301080111719
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -716,5 +777,68 @@
 										line-height 48px
 										>.text
 											color red
-
+				.shopGuide		
+					background-color #fff
+					margin-bottom 20px
+					padding 10px 28px 26px
+					.guideList
+						overflow hidden
+						.guideItem
+							box-sizing border-box
+							width 343px
+							height 264px
+							float left
+							background-color #f5f5f5
+							margin 4px 0 0 4px
+							padding 20px 0 0 20px
+							.guideTitle
+								padding-left 10px
+								.big
+									font-size 32px
+									line-height 1.5
+									color #333
+								.small
+									font-size 24px
+									line-height 36px
+									color: rgb(127, 127, 127)
+							.imgList
+								img
+									margin-right 4px
+				
+				
+				
+				.ft-wrap
+					border-top: 1px solid rgba(0,0,0,.15)
+					background-color #414141
+					.ft-content
+						padding 54px 20px 28px
+						text-align center
+						.btns
+							margin-bottom 36px
+							a
+								display inline-block
+								width 172px
+								line-height 62px
+								font-size 24px
+								border: 1px solid #999
+								color #fff
+								border-radius 4px
+								&:first-child
+									margin-right 50px
+						.copyright
+							color #999
+							font-size 24px
+							line-height 32px
+				.toTop
+					.tp-icon 
+						display none
+						position fixed
+						right .3rem
+						bottom 1.6rem
+						vertical-align middle
+						width 1.1rem
+						height 1.1rem
+						z-index 3
+						background-image url('https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/goToTop-f502426678.png?imageView&type=webp')
+						background-size 1.1rem 1.1rem
 </style>		
