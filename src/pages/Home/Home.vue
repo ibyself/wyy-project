@@ -266,6 +266,7 @@
 					height 296px
 					.swiper-wrapper
 						.swiper-slide
+							width 100vw
 							img
 								width 100%
 								height 100%

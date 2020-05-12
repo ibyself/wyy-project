@@ -3,7 +3,7 @@
 		<div class="header">
       <div class="headerSearch">
         <a href="https://m.you.163.com/"></a>
-        <div class="searchBox">
+        <div class="searchBox" @click="$router.push('/search')">
           <i class="icon-search"></i>
           <span>搜索商品, 共25372款好物</span>
         </div>
