@@ -1,6 +1,8 @@
 <template>
-    <div id="homeContainer">
-		<HeaderNav/>
+    <div id="homeContainer" v-if="homeData">
+		<div v-if="homeData.kingKongModule">
+			<HeaderNav :nvList="homeData.kingKongModule.kingKongList"/>
+		</div>
 		
 		<div class="homeContentWrap">
 			<div class="homeContent">
@@ -16,90 +18,26 @@
 				</div>
 				<!-- 服务 -->
 				<div class="servicePolicy">
-					<ul class="list">
-						<li class="item">
+					<ul class="list" v-if="homeData.policyDescList">
+						<li class="item" v-for="(item,index) in homeData.policyDescList" :key="index">
 							<a href="javascript:;">
-								<img class="icon" src="https://yanxuan.nosdn.127.net/a03dd909803b9ac032eba58b7253a2f6.png"/>
-								<span class="text">网易自营品牌</span>
+								<img class="icon" :src="item.icon"/>
+								<span class="text">{{item.desc}}</span>
 							</a>
 						</li>
-						<li class="item">
-							<a href="javascript:;">
-								<img class="icon" src="https://yanxuan.nosdn.127.net/a03dd909803b9ac032eba58b7253a2f6.png"/>
-								<span class="text">30天无忧退货</span>
-							</a>
-						</li>
-						<li class="item">
-							<a href="javascript:;">
-								<img class="icon" src="https://yanxuan.nosdn.127.net/a03dd909803b9ac032eba58b7253a2f6.png"/>
-								<span class="text">48小时快速退款</span>
-							</a>
-						</li>
+						
 					</ul>
 				</div>
 				<!-- nav -->
 				<div class="navWrap">
-					<ul class="navList">
-						<li class="navItem">
+					<ul class="navList" v-if="homeData.kingKongModule">
+						<li class="navItem" v-for="(nvtem,index) in homeData.kingKongModule.kingKongList" :key="index">
 							<a href="javascript:;">
-								<img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-								<span class="text">新品首发</span>
+								<img :src="nvtem.picUrl" alt="">
+								<span class="text">{{nvtem.text}}</span>
 							</a>
 						</li>
-						<li class="navItem">
-							<a href="javascript:;">
-								<img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-								<span class="text">新品首发</span>
-							</a>
-						</li>
-						<li class="navItem">
-							<a href="javascript:;">
-								<img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-								<span class="text">新品首发</span>
-							</a>
-						</li>
-						<li class="navItem">
-							<a href="javascript:;">
-								<img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-								<span class="text">新品首发</span>
-							</a>
-						</li>
-						<li class="navItem">
-							<a href="javascript:;">
-								<img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-								<span class="text">新品首发</span>
-							</a>
-						</li>
-						<li class="navItem">
-							<a href="javascript:;">
-								<img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-								<span class="text">新品首发</span>
-							</a>
-						</li>
-						<li class="navItem">
-							<a href="javascript:;">
-								<img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-								<span class="text">新品首发</span>
-							</a>
-						</li>
-						<li class="navItem">
-							<a href="javascript:;">
-								<img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-								<span class="text">新品首发</span>
-							</a>
-						</li>
-						<li class="navItem">
-							<a href="javascript:;">
-								<img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-								<span class="text">新品首发</span>
-							</a>
-						</li>
-						<li class="navItem">
-							<a href="javascript:;">
-								<img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-								<span class="text">新品首发</span>
-							</a>
-						</li>
+						
 					</ul>
 				</div>
 				<!-- 促销 -->
@@ -119,36 +57,23 @@
 							</div>
 						</div>
 						<div class="right">
-							<div class="r-top">
+							<div class="r-content" v-for="(item,index) in homeData.indexActivityModule" :key="index">
 								<div class="cnt">
-									<div class="c-title">福利社</div>
-									<div class="subtitle">今日特价</div>
+									<div class="c-title">{{item.title}}</div>
+									<div class="subtitle">{{item.subTitle}}</div>
+									<div class="tag">{{item.tag}}</div>
 								</div>
 								<div class="picWrap">
 									<div class="imgWrap">
-										<img src="https://yanxuan-item.nosdn.127.net/da045b2d0cfad5ea873618205b759c40.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
+										<img :src="item.showPicUrl" alt="">
 									</div>
 									<div class="discount">
-										<div class="line1">￥69</div>
-										<div class="line2">￥79</div>
+										<div class="line1">{{item.activityPrice}}</div>
+										<div class="line2">{{item.originPrice}}</div>
 									</div>
 								</div>
 							</div>
-							<div class="r-bottom">
-									<div class="cnt">
-									<div class="c-title">新人拼团</div>
-									<div class="tag">1元起包邮</div>
-								</div>
-								<div class="picWrap">
-									<div class="imgWrap">
-										<img src="https://yanxuan-item.nosdn.127.net/431a09a43914483f4d70aeda8ecb8a59.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-									</div>
-									<div class="discount">
-										<div class="line1">￥9.9</div>
-										<div class="line2">￥16.9</div>
-									</div>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -158,87 +83,13 @@
 						<div class="hot-left">类目热销榜</div>
 					</div>
 					<div class="hot-content">
-						<div class="content-top">
-							<div class="item-big">
-								<div class="big-title">
-									<span class="text">热销榜</span>
+						<div class="contentWrap" v-if="homeData.categoryHotSellModule">
+							<div class="contentItem" v-for="(item,index) in homeData.categoryHotSellModule.categoryList" :key="index">
+								<div class="item-title">
+									<span class="text">{{item.categoryName}}</span>
 								</div>
-								<div class="big-img">
-									<img src="https://yanxuan-item.nosdn.127.net/0434f5cb29b2c6c6ade2f1c0487ae97c.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-								</div>
-							</div>
-							<div class="item-big">
-								<div class="big-title">
-									<span class="text">热销榜</span>
-								</div>
-								<div class="big-img">
-									<img src="https://yanxuan-item.nosdn.127.net/0434f5cb29b2c6c6ade2f1c0487ae97c.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-								</div>
-							</div>
-						</div>
-						<div class="content-bottom">
-							<div class="item-small">
-								<div class="small-title">
-									<span class="text">居家生活榜</span>
-								</div>
-								<div class="small-img">
-									<img src="https://yanxuan-item.nosdn.127.net/c588b0085bfa9e9d119c995806d39c3c.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-								</div>
-							</div>
-							<div class="item-small">
-								<div class="small-title">
-									<span class="text">居家生活榜</span>
-								</div>
-								<div class="small-img">
-									<img src="https://yanxuan-item.nosdn.127.net/c588b0085bfa9e9d119c995806d39c3c.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-								</div>
-							</div>
-							<div class="item-small">
-								<div class="small-title">
-									<span class="text">居家生活榜</span>
-								</div>
-								<div class="small-img">
-									<img src="https://yanxuan-item.nosdn.127.net/c588b0085bfa9e9d119c995806d39c3c.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-								</div>
-							</div>
-							<div class="item-small">
-								<div class="small-title">
-									<span class="text">居家生活榜</span>
-								</div>
-								<div class="small-img">
-									<img src="https://yanxuan-item.nosdn.127.net/c588b0085bfa9e9d119c995806d39c3c.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-								</div>
-							</div>
-							<div class="item-small">
-								<div class="small-title">
-									<span class="text">居家生活榜</span>
-								</div>
-								<div class="small-img">
-									<img src="https://yanxuan-item.nosdn.127.net/c588b0085bfa9e9d119c995806d39c3c.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-								</div>
-							</div>
-							<div class="item-small">
-								<div class="small-title">
-									<span class="text">居家生活榜</span>
-								</div>
-								<div class="small-img">
-									<img src="https://yanxuan-item.nosdn.127.net/c588b0085bfa9e9d119c995806d39c3c.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-								</div>
-							</div>
-							<div class="item-small">
-								<div class="small-title">
-									<span class="text">居家生活榜</span>
-								</div>
-								<div class="small-img">
-									<img src="https://yanxuan-item.nosdn.127.net/c588b0085bfa9e9d119c995806d39c3c.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
-								</div>
-							</div>
-							<div class="item-small">
-								<div class="small-title">
-									<span class="text">居家生活榜</span>
-								</div>
-								<div class="small-img">
-									<img src="https://yanxuan-item.nosdn.127.net/c588b0085bfa9e9d119c995806d39c3c.png?quality=75&type=webp&imageView&thumbnail=200x200" alt="">
+								<div class="item-img">
+									<img :src="item.showPicUrl" alt="">
 								</div>
 							</div>
 						</div>
@@ -254,101 +105,48 @@
 						</a>
 					</div>
 					<div class="rec-content">
-						<div class="rec-big">
-							<a href="javascript:;" class="bigWrap">
-								<img src="https://yanxuan-item.nosdn.127.net/02dd07dbee4575a71afa30fd680a6ec7.png?quality=75&type=webp&imageView&thumbnail=280x280" alt="" class="big-left">
-								<div class="big-right">
-									<p class="r-title">
-										<span class="text">母亲节特惠</span>
-									</p>
-									<p class="bigTitle">15分钟快速救脸，射频多功能美容仪</p>
-									<p class="smallTitle">掌心里的“美容院”</p>
-									<p class="big-price">￥759</p>
-								</div>
-							</a>
-						</div>
-						<div class="rec-small">
-							<ul class="smList">
-								<li class="smItem">
-									<div class="imgWrap">
-										<img src="https://yanxuan-item.nosdn.127.net/eb5aaec3178da93222aeca4b7fcaf757.png?type=webp&imageView&quality=65&thumbnail=330x330" alt="" class="itemImg">
+						<ul class="recList" v-if="homeData.popularItemList">
+							<li class="recItem" v-for="(popItem,index) in homeData.popularItemList" :Key="index">
+								<a href="javascript:;" class="itemWrap">
+									<div class="itemImg">
+										<img :src="popItem.showPicUrl" alt="">
 									</div>
-									<p class="itemTitle">告别啃食尴尬，秘制无骨凤爪...</p>
-									<div class="itemPrice">
-										<span class="text">￥22</span>
+									<div class="itemContent">
+										<div class="itemBtn" v-if="index==0">
+											<span class="btnText">母亲节特惠</span>
+										</div>
+										<p class="bigTitle">{{popItem.name}}</p>
+										<p class="smallTitle">{{popItem.simpleDesc}}</p>
+										<p class="price">￥{{popItem.retailPrice}}</p>
+										<div class="itemBtn">
+											<span class="btnText" v-for="(item,index) in popItem.itemTagList" :key="index">{{item.name}}</span>
+										</div>
 									</div>
-								</li>
-								<li class="smItem">
-									<div class="imgWrap">
-										<img src="https://yanxuan-item.nosdn.127.net/eb5aaec3178da93222aeca4b7fcaf757.png?type=webp&imageView&quality=65&thumbnail=330x330" alt="" class="itemImg">
-									</div>
-									<p class="itemTitle">告别啃食尴尬，秘制无骨凤爪...</p>
-									<div class="itemPrice">
-										<span class="text">￥22</span>
-									</div>
-								</li>
-								<li class="smItem">
-									<div class="imgWrap">
-										<img src="https://yanxuan-item.nosdn.127.net/eb5aaec3178da93222aeca4b7fcaf757.png?type=webp&imageView&quality=65&thumbnail=330x330" alt="" class="itemImg">
-									</div>
-									<p class="itemTitle">告别啃食尴尬，秘制无骨凤爪...</p>
-									<div class="itemPrice">
-										<span class="text">￥22</span>
-									</div>
-								</li>
-							</ul>
-						</div>
+								</a>
+							</li>
+						</ul>
+
+
+						
 					</div>
 				</div>
 				<!-- 购物指南 -->
 				<div class="shopGuide">
-					<ul class="guideList">
-						<li class="guideItem">
+					<ul class="guideList" v-if="homeData.sceneLightShoppingGuideModule">
+						<li class="guideItem" v-for="(shopItem,index) in homeData.sceneLightShoppingGuideModule" :key="index">
 							<div class="guideTitle">
-								<div class="big">严选超市</div>
-								<div class="small">10元凑好物</div>
+								<div class="big">{{shopItem.styleItem.title}}</div>
+								<div class="small">{{shopItem.styleItem.desc}}</div>
 							</div>
 							<div class="imgList">
-								<img src="https://yanxuan-item.nosdn.127.net/758b098102d7b82ccabcfd95b25b02c3.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-								<img src="https://yanxuan-item.nosdn.127.net/cfd0fec5e70ca09d4c0b7492dba26f2e.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
+								<img v-for="(item,index) in shopItem.styleItem.picUrlList" :key="index" :src="item" alt="">
+								
 							</div>
 						</li>
-						<li class="guideItem">
-							<div class="guideTitle">
-								<div class="big">严选超市</div>
-								<div class="small">10元凑好物</div>
-							</div>
-							<div class="imgList">
-								<img src="https://yanxuan-item.nosdn.127.net/758b098102d7b82ccabcfd95b25b02c3.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-								<img src="https://yanxuan-item.nosdn.127.net/cfd0fec5e70ca09d4c0b7492dba26f2e.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-							</div>
-						</li>
-						<li class="guideItem">
-							<div class="guideTitle">
-								<div class="big">严选超市</div>
-								<div class="small">10元凑好物</div>
-							</div>
-							<div class="imgList">
-								<img src="https://yanxuan-item.nosdn.127.net/758b098102d7b82ccabcfd95b25b02c3.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-								<img src="https://yanxuan-item.nosdn.127.net/cfd0fec5e70ca09d4c0b7492dba26f2e.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-							</div>
-						</li>
-						<li class="guideItem">
-							<div class="guideTitle">
-								<div class="big">严选超市</div>
-								<div class="small">10元凑好物</div>
-							</div>
-							<div class="imgList">
-								<img src="https://yanxuan-item.nosdn.127.net/758b098102d7b82ccabcfd95b25b02c3.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-								<img src="https://yanxuan-item.nosdn.127.net/cfd0fec5e70ca09d4c0b7492dba26f2e.png?quality=75&type=webp&imageView&thumbnail=150x150" alt="">
-							</div>
-						</li>
+						
 					</ul>
 				</div>
-				<!-- 回到顶部 -->
-				<div class="toTop">
-					<i class="tp-icon"></i>
-				</div>
+				
 				<!-- 版权 -->
 				<div class="ft-wrap">
 					<div class="ft-content">
@@ -362,6 +160,10 @@
 					</div>
 				</div>
 			</div>
+			<!-- 回到顶部 -->
+			<div class="toTop" :class="{active:this.scrollY>=1100}" @click="toTop">
+				<i class="tp-icon"></i>
+			</div>
 		</div>
 	</div>
 </template>
@@ -370,6 +172,7 @@
     import Swiper from 'swiper'
 	import 'swiper/css/swiper.min.css'
 	import BScroll from 'better-scroll'
+	import {mapState} from 'vuex'
     import HeaderNav from '../../components/HeaderNav/HeaderNav'
     export default {
 		data(){
@@ -383,40 +186,70 @@
 					'https://yanxuan.nosdn.127.net/feadfbdcc0e2dea285d92c6740d46c66.jpg?imageView&quality=75&thumbnail=750x0',
 					'https://yanxuan.nosdn.127.net/791dda3ae432212164b1668b25fbd11c.jpg?imageView&quality=75&thumbnail=750x0',
 					'https://yanxuan.nosdn.127.net/5afff79cb85dfcd465e6da0d8404ddae.jpg?imageView&quality=75&thumbnail=750x0'
-				]
+				],
+				scrollY:0
 			}
 		},
         components:{
             HeaderNav
-        },
-        mounted(){
-          	new Swiper('.swiper-container', {
-         		autoplay: true,//可选选项，自动滑动
-				loop:true,
-				pagination: {
-					el: '.swiper-pagination',
-					type: 'custom',
-					clickable:true,
-					renderCustom: function (swiper, current, total) {
-						var customPaginationHtml=''
-						for(let i=0;i<total;i++){
-							if(i===current-1){
-								customPaginationHtml+='<span class="swiper-pagination-customs swiper-pagination-customs-active"></span>'
-							}else{
-								customPaginationHtml+='<span class="swiper-pagination-customs"></span>'
-							}
-						}
-						return customPaginationHtml
-					}
+		},
+		methods:{
+			toTop(){
+				this.homeScroll.scrollTo(0,0,1000)
+			},
+			_initScroll(){
+				if(this.homeScroll){
+					this.homeScroll.refresh()
+				}else{
+					this.homeScroll = new BScroll('.homeContentWrap',{
+						scrollY:true,
+						click:true
+					})
+					this.homeScroll.on('scroll',({x,y})=>{
+						this.scrollY=Math.abs(y)
+					})
+					this.homeScroll.on('scrollEnd',({x,y})=>{
+						this.scrollY=Math.abs(y)
+					})
 				}
-			})
+			},
+			_initSwiper(){
+				new Swiper('.swiper-container', {
+					autoplay: true,//可选选项，自动滑动
+					loop:true,
+					pagination: {
+						el: '.swiper-pagination',
+						type: 'custom',
+						clickable:true,
+						renderCustom: function (swiper, current, total) {
+							var customPaginationHtml=''
+							for(let i=0;i<total;i++){
+								if(i===current-1){
+									customPaginationHtml+='<span class="swiper-pagination-customs swiper-pagination-customs-active"></span>'
+								}else{
+									customPaginationHtml+='<span class="swiper-pagination-customs"></span>'
+								}
+							}
+							return customPaginationHtml
+						}
+					}
+				})
+			}
+		},
+        async mounted(){	
+			await this.$store.dispatch('reqHomeData')
+			if(this.homeData){
+				this._initScroll()
+				this._initSwiper()
+			}
 			
-			new BScroll('.homeContentWrap',{
-				scrollY:true,
-				click:true
+			
+		},
+		computed:{
+			...mapState({
+				homeData:state=>state.home.homeData
 			})
-
-        },
+		}
     };
 </script>
 
@@ -557,7 +390,7 @@
 							width 343px 
 							height 438px
 							float left
-							.r-top,.r-bottom
+							.r-content
 								height 215px
 								background-color #FBE2D3
 								border-radius 4px
@@ -565,7 +398,11 @@
 								box-sizing border-box
 								padding 20px 0 0 30px
 								position relative
+								&:last-child 
+									background-color #FFECC2
 								.cnt
+									position relative 
+									z-index 2
 									.c-title
 										color #333
 										font-size 32px
@@ -574,12 +411,27 @@
 										color #7F7F7F
 										font-size 24px
 										line-height 36px
+									.tag
+										display inline-block
+										line-height 32px
+										border-radius 4px
+										padding 0 10px
+										color #fff
+										background-color #cbb693
+										font-size 22px
 								.picWrap
 									width 200px
 									height 200px
 									position absolute
 									right 0
 									bottom 0
+									z-index 1
+									>.imgWrap
+										width 200px
+										height 200px
+										img
+											width 100%
+											height 100%
 									.discount
 										box-sizing border-box
 										padding-top 5px
@@ -603,21 +455,7 @@
 											line-height 30px
 											margin-top -5px
 											text-decoration line-through
-							.r-bottom
-								height 215px
-								background-color #FFECC2
-								border-radius 4px
-								margin-bottom 4px
-								.cnt
-									.tag
-										display inline-block
-										height 32px
-										line-height 32px
-										border-radius 4px
-										padding 0 10px
-										color #fff
-										background-color #cbb693
-										font-size 22px
+							
 				.categorySellWell
 					background-color #fff
 					margin-bottom 20px
@@ -631,54 +469,61 @@
 							float left
 					.hot-content
 						padding 0 20px 20px 30px
-						.content-top
+						.contentWrap
 							overflow hidden
-							.item-big
+							.contentItem
 								float left
-								background-color #f9f3e4
-								width 340px 
-								height 200px
-								margin 0 10px 10px 0
-								overflow hidden
-								position relative
-								.big-title
-									padding-left 24px
-									margin-top 66px
-									color #333	
-									.text
-										font-size 28px
-										position relative
-										&:after
-											content ''
-											position absolute
-											left 0
-											bottom -20px
-											width 48px
-											height 4px
-											background-color #333
-								.big-img
-									position absolute
-									right 0
-									top 0
-						.content-bottom
-							overflow hidden
-							.item-small
 								width 165px
 								height 180px
 								background-color #f5f5f5
 								margin 0 10px 10px 0
-								float left
 								text-align center
-								.small-title
+								&:nth-child(1),&:nth-child(2)
+									float left
+									background-color #f9f3e4
+									width 340px 
+									height 200px
+									margin 0 10px 10px 0
+									overflow hidden
+									position relative
+									text-align left
+									.item-title
+										padding-left 24px
+										margin-top 66px
+										color #333	
+										vertical-align middle
+										.text
+											font-size 28px
+											position relative
+											&:after
+												content ''
+												position absolute
+												left 0
+												bottom -20px
+												width 48px
+												height 4px
+												background-color #333
+									.item-img
+										position absolute
+										right 0
+										top 0
+										width 200px
+										height 200px
+										img
+											width 100%
+											height 100%
+											vertical-align middle
+								.item-title
 									margin-top 10px
 									color #333
 									font-size 24px
-								.small-img
+								.item-img
 									margin-top 4px
 									img
 										width 120px
 										height 120px	
 				.recommend
+					margin-bottom 20px
 					.rec-title
 						padding 0 30px
 						height 90px
@@ -705,77 +550,74 @@
 								background-size 100% 100%
 					.rec-content
 						background-color #fff
-						.rec-big
+						.recList
 							padding 0 30px 20px
-							.bigWrap
+							overflow hidden
+							.recItem
+								float left
+								box-sizing border-box
 								display flex
-								background-color #FEF0DF
-								align-items center								
-								
-								img
-									width 280px
-									height 280px
-									margin-right 30px
-								.big-right
-									width 350px
-									height 162px
-									.r-title
-										width 350px
-										height 33px
-										margin-bottom 9px
-										.text
-											color #DD1A21
-											background rgba(255,255,255,.9)
-											font-size 18px
-											margin-bottom 5px
-											padding 0 8px
-											line-height 30px
-											border 1px solid red
-											border-radius 15px
-									.bigTitle
-										color #333
-										font-size 28px
-										height 42px
-										line-height 42px
-										width 350px
-										overflow hidden
-										text-overflow ellipsis
-										white-space nowrap
-									.smallTitle
-										color #7f7f7f
-										font-size 24px
-										line-height 36px
-										overflow hidden
-										text-overflow ellipsis
-										white-space nowrap
-									.big-price
-										font-size 28px
-										color red
-						.rec-small	
-							padding-left .13333rem
-							.smList
-								display flex
-								.smItem
-									margin-left 20px
-									padding-bottom 13px
-									width 216px
-									.imgWrap
-										background-color #f5f5f5
+								padding-bottom 13px
+								width 216px
+								overflow hidden
+								&:first-child
+									width 100%
+									.itemWrap
+										width 100%
+										background #FEF0DF
+										display flex
+										align-items center
 										.itemImg
+											box-sizing border-box
+											width 280px
+											height 280px
+											background #FEF0DF
+											img
+												width 100%
+												height 100%	
+										.itemContent
+											margin-left .4rem
+											width 350px
+								&:nth-child(3)
+									margin 0 20px
+								.itemWrap
+									diplay block
+									.itemImg
+										width 216px
+										height 216px
+										background-color #f5f5f5
+										img
 											width 100%
 											height 100%	
-									.itemTitle
-										font-size 24px
-										height 72px
-										color #333	
-										line-height .48rem	
-										text-overflow ellipsis
-										overflow hidden
-										white-space normal	
-									.itemPrice
-										height 48px
-										line-height 48px
-										>.text
+									.itemContent
+										width 216px
+										.itemBtn
+											line-height .4rem
+											
+											>.btnText
+												display inline-block
+												padding 0 8px
+												color red
+												font-size 18px
+												border 1px solid red
+												border-radius .2rem
+										.bigTitle
+											color #333
+											font-size 28px
+											height 42px
+											line-height 42px
+											overflow hidden
+											text-overflow ellipsis
+											white-space nowrap
+										.smallTitle
+											color #7f7f7f
+											font-size 24px
+											line-height 36px
+											overflow hidden
+											text-overflow ellipsis
+											white-space nowrap
+										.price
+											font-size 28px
 											color red
 				.shopGuide		
 					background-color #fff
@@ -802,8 +644,11 @@
 									line-height 36px
 									color: rgb(127, 127, 127)
 							.imgList
+
 								img
 									margin-right 4px
+									width 150px
+									height 150px
 				
 				
 				
@@ -829,16 +674,21 @@
 							color #999
 							font-size 24px
 							line-height 32px
-				.toTop
-					.tp-icon 
-						display none
-						position fixed
-						right .3rem
-						bottom 1.6rem
-						vertical-align middle
-						width 1.1rem
-						height 1.1rem
-						z-index 3
-						background-image url('https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/goToTop-f502426678.png?imageView&type=webp')
-						background-size 1.1rem 1.1rem
+			.toTop
+				display none
+				width 1.1rem
+				height 1.1rem
+				position fixed
+				right .3rem
+				bottom 1.6rem
+				z-index 3
+				vertical-align middle
+				.tp-icon 
+					display block
+					width 1.1rem
+					height 1.1rem
+					background-image url('https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/goToTop-f502426678.png?imageView&type=webp')
+					background-size 1.1rem 1.1rem
+				&.active
+					display block	
 </style>		

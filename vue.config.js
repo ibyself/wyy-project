@@ -15,6 +15,24 @@ module.exports={
         }
     },
     devServer: {
-        open:true
+        open:true,
+        proxy: {
+            '/api': {
+              target: 'http://localhost:3000',
+              ws: true,
+              changeOrigin: true,
+              pathRewrite:{
+                  '^/api':''
+              }
+            },
+            '/wy': {
+              target: 'http://m.you.163.com',
+              ws: true,
+              changeOrigin: true,
+              pathRewrite:{
+                '^/wy':''
+              }
+            }
+          }
     }
 }

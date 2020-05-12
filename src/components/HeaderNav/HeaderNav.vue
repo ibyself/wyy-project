@@ -1,5 +1,5 @@
 <template>
-	<div id="headerContainer">
+	<div id="headerContainer" v-if="nvList">
 		<div class="header">
       <div class="headerSearch">
         <a href="https://m.you.163.com/"></a>
@@ -12,67 +12,26 @@
       <div class="headerNav">
         <div class="navWrap" v-show="!isNavShow">
           <div class="navLeft">
-            <ul class="navList">
-              <li class="navItem active">
+            <ul class="navList"  v-if="nvList">
+              <li class="navItem" @click="navIndex=0" :class="{active:navIndex===0}">
                 <a href="javascript:;">推荐</a>
               </li>
-              <li class="navItem">
-                <a href="javascript:;">居家生活</a>
+              <li class="navItem" :class="{active:navIndex===index+1}" @click="navIndex=index+1" v-for="(item,index) in nvList" :key="index">
+                <a href="javascript:;">{{item.text}}</a>
               </li>
-              <li class="navItem">
-                <a href="javascript:;">服饰鞋包</a>
-              </li>
-              <li class="navItem">
-                <a href="javascript:;">美食酒水</a>
-              </li>
-              <li class="navItem">
-                <a href="javascript:;">个护清洁</a>
-              </li>
-              <li class="navItem">
-                <a href="javascript:;">母婴亲子</a>
-              </li>
-              <li class="navItem">
-                <a href="javascript:;">运动旅行</a>
-              </li>
-              <li class="navItem">
-                <a href="javascript:;">数码家电</a>
-              </li>
-              <li class="navItem">
-                <a href="javascript:;">严选全球</a>
-              </li>
+              
             </ul>
           </div>
           
         </div>
         <div class="allNavWrap" v-show="isNavShow">
           <p>全部频道</p>
-          <ul class="allNav">
-            <li class="item active">
+          <ul class="allNav"  v-if="nvList">
+            <li class="item"  @click="navIndex=0" :class="{active:navIndex===0}">
               <a href="javascript:;">推荐</a>
             </li>
-            <li class="item">
-              <a href="javascript:;">居家生活</a>
-            </li>
-            <li class="item">
-              <a href="javascript:;">服饰鞋包</a>
-            </li>
-            <li class="item">
-              <a href="javascript:;">美食酒水</a>
-            </li>
-            <li class="item">
-              <a href="javascript:;">个护清洁</a>
-            </li>
-            <li class="item">
-              <a href="javascript:;">母婴亲子</a>
-            </li>
-            <li class="item">
-              <a href="javascript:;">运动旅行</a>
-            </li>
-            <li class="item">
-              <a href="javascript:;">数码家电</a>
-            </li>
-            <li class="item">
-              <a href="javascript:;">严选全球</a>
+            <li class="item" :class="{active:navIndex===index+1}" @click="navIndex=index+1" v-for="(item,index) in nvList" :key="index">
+              <a href="javascript:;">{{item.text}}</a>
             </li>
           </ul>
         </div>
@@ -86,10 +45,43 @@
 </template>
 
 <script  type="text/ecmascript-6">
+  import Bscroll from 'better-scroll'
 	export default {
+    props:{
+      nvList:{
+        type:Array,
+        required: true
+      }
+    },
     data(){
       return {
+        navIndex:0,
         isNavShow:false
+      }
+    },
+    methods:{
+      _initScroll(){
+        if(this.bScroll){
+          this.bScroll.refresh()
+        }else{
+          this.bScroll=new Bscroll('.navLeft',{
+            scrollX:true,
+            click:true
+          })
+        }
+        
+      }
+    },
+    mounted(){
+      if(this.nvList){
+        this._initScroll()
+      }
+    },
+    watch:{
+      nvList(){
+        this.$nextTick(()=>{
+          this._initScroll()
+        })
       }
     }
 	};
@@ -101,8 +93,10 @@
     position fixed 
     left 0
     top 0
-    z-index 2
-    .header     
+    z-index 100
+    .header 
+      position relative
+      z-index 3
       .headerSearch
         padding 16px 30px
         background-color #fff
@@ -148,12 +142,12 @@
             width 650px
             overflow hidden
             .navList
+              float left
               display flex
-              padding 0 30px
               .navItem
                 box-sizing border-box
-                padding 0 16px
-                margin 0 10px
+                padding 0 10px
+                margin 0 20px
                 white-space nowrap
                 line-height 60px
                 text-align center

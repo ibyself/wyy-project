@@ -17,7 +17,7 @@
 <style lang='stylus' rel='stylesheet/stylus' scoped>
   #appContainer
     width 100vw
-    
+    height 100vh
     background-color #eee 
     position relative
     
