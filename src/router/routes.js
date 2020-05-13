@@ -3,8 +3,8 @@ const Category=()=>import('../pages/Category/Category.vue')
 const Topic=()=>import('../pages/Topic/Topic.vue')
 const Cart=()=>import('../pages/Cart/Cart.vue')
 const Personal=()=>import('../pages/Personal/Personal.vue')
-
-const Search=()=>import('../components/Search/Search.vue')
+const Search=()=>import('../pages/Search/Search.vue')
+const CateRight=()=>import('../pages/CateRight/CateRight.vue')
 export default [
     {
         path:'/home',
@@ -12,7 +12,13 @@ export default [
     },
     {
         path:'/category',
-        component:Category
+        component:Category,
+        children:[
+            {
+                path:'/category/right/:id',
+                component:CateRight
+            }
+        ]
     },
     {
         path:'/topic',

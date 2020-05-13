@@ -7,3 +7,9 @@ export const getHotSearchList=()=>ajax('/wy/xhr/search/init.json')
 
 //查询商品
 export const getSearchList=(keywordPrefix)=>ajax.post('/wy/xhr/search/searchAutoComplete.json',{keywordPrefix})
+
+//获取分类nav列表
+export const getCategoryNavList=()=>ajax('/api/categoryNavList')
+
+//获取分类数据
+export const getCategoryList=()=>ajax('/api/categoryList')

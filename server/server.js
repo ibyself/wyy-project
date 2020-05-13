@@ -13,6 +13,16 @@ let homeData=require('./datas/homeData.json')
 router.get('/getHomeData',(ctx,next)=>{
     ctx.body=homeData
 })
+//获取cateNavList
+let categoryNavList=require('./datas/categoryNavList.json')
+router.get('/categoryNavList',(ctx,next)=>{
+    ctx.body=categoryNavList
+})
+//获取cateList
+let categoryList=require('./datas/category.json')
+router.get('/categoryList',(ctx,next)=>{
+    ctx.body=categoryList
+})
 
 //安装路由器，声明使用中间件
 app.use(router.routes()).use(router.allowedMethods())
