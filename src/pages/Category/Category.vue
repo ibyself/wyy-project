@@ -26,14 +26,18 @@
         },
         methods:{
             _initScroll(){
-                this.leftScroll=new BScroll('.cont-left',{
-                    scrollY:true,
-                    click:true
-                })
+                if(this.leftScroll){
+                    this.leftScroll.refresh()
+                }else{
+                    this.leftScroll=new BScroll('.cont-left',{
+                        scrollY:true,
+                        click:true
+                    })
+                }
                 
             }
         },
-        async mounted(){
+        mounted(){
             this._initScroll()
         }
     };

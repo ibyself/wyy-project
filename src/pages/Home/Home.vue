@@ -241,9 +241,7 @@
 			if(this.homeData){
 				this._initScroll()
 				this._initSwiper()
-			}
-			
-			
+			}		
 		},
 		computed:{
 			...mapState({
