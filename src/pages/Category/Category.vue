@@ -30,13 +30,10 @@
                     scrollY:true,
                     click:true
                 })
-                this.rightScroll=new BScroll('.cont-right',{
-                    scrollY:true,
-                    click:true
-                })
+                
             }
         },
-        mounted(){
+        async mounted(){
             this._initScroll()
         }
     };

@@ -4,7 +4,7 @@
 				<i class="u-icon u-icon-tabBar-index"></i>
 				<span>首页</span>
 			</div>
-			<div class="item" :class="{active:$route.path==='/category'}" @click="getPath('/category')">
+			<div class="item" :class="{active:$route.path==='/category'||$route.path.split('/')[1]==='category'}" @click="getPath('/category')">
 				<i class="u-icon u-icon-tabBar-cate"></i>
 				<span>分类</span>
 			</div>

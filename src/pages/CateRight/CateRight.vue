@@ -28,6 +28,7 @@
 </template>
 
 <script  type="text/ecmascript-6">
+    import BScroll from 'better-scroll'
     export default {
         data(){
             return {
@@ -35,10 +36,19 @@
                 categoryList:[]
             }
         },
+        methods:{
+            _initScroll(){
+                this.rightScroll=new BScroll('.cont-right',{
+                    scrollY:true,
+                    click:true
+                })
+            }
+        },
         async mounted(){
             this.categoryList = await this.$API.getCategoryList()
 
             this.categoryObj=this.categoryList.find((item,index)=>this.$route.params.id*1===item.id)
+            this._initScroll()
         },
         watch:{
             $route(){
