@@ -1,5 +1,5 @@
 <template>
-    <div id="categoryContainer">
+    <div id="categoryContainer" v-if="cateNavList">
         <div class="cateHeader">
            <div class="headerSearch">
                 <i class="icon-search"></i>
@@ -7,8 +7,8 @@
            </div>
         </div>
         <div class="cateContent">
-            <div class="cont-left">
-                <CateLeft/>
+            <div class="cont-left" ref="leftWrap">
+                <CateLeft :cateNavList="this.cateNavList"/>
             </div>
             <div class="cont-right">
                 <router-view></router-view>
@@ -18,27 +18,45 @@
 </template>
 
 <script  type="text/ecmascript-6">
+    import {mapState} from 'vuex'
     import BScroll from 'better-scroll'
     import CateLeft from '../../components/CateLeft/CateLeft'
     export default {
+        name:"category",
+        data(){
+            return {
+                cateNavList:[]
+            }
+        },
         components:{
             CateLeft
         },
         methods:{
             _initScroll(){
-                if(this.leftScroll){
-                    this.leftScroll.refresh()
-                }else{
-                    this.leftScroll=new BScroll('.cont-left',{
-                        scrollY:true,
-                        click:true
-                    })
+                if(this.$refs.leftWrap){
+                    if(this.leftScroll){
+                        this.leftScroll.refresh()
+                    }else{
+                        this.leftScroll=new BScroll(this.$refs.leftWrap,{
+                            scrollY:true,
+                            click:true
+                        })
+                    }
                 }
+                
                 
             }
         },
+        async created(){
+            let result = await this.$API.getCategoryNavList()
+            this.cateNavList=result.categoryNavList
+            this.$route.params.id!=this.cateNavList[0].id && this.$router.push(`/category/right/${this.cateNavList[0].id}`)
+            this.$nextTick(()=>{
+                this._initScroll()
+            })
+        },
         mounted(){
-            this._initScroll()
+            
         }
     };
 </script>

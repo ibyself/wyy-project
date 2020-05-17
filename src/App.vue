@@ -1,8 +1,6 @@
 <template>
     <div id="appContainer">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
+      <router-view></router-view>
       <FooterNav/>
     </div>
 </template>

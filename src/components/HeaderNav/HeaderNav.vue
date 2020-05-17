@@ -107,6 +107,9 @@
           width 138px
           height 40px
           margin-right 20px
+          background-repeat no-repeat
+          background-position center
+          background-size 100%
         .searchBox
           width 442px
           height 56px
@@ -120,14 +123,17 @@
             width 28px
             height 28px
             margin-right 10px
-            
+            background-repeat no-repeat
+            background-position center
+            background-size 100%
           span
             color #666
             font-size 28px
         .login
           width 74px
           height 40px
-          border 1px solid red
+          border 2px solid red
+          padding 0
           border-radius 6px
           background-color #fff
           color red
@@ -185,7 +191,9 @@
             width 30px
             height 30px
             background-image url('https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-down-3-9b31adfa37.png?imageView&type=webp')
-          
+            background-repeat no-repeat
+            background-position center
+            background-size 100%
         .allNavWrap
           display none
           position absolute

@@ -10,16 +10,17 @@
 
 <script  type="text/ecmascript-6">
     export default {
-        data(){
-            return {
-                navIndex:0,
-                cateNavList:[]
+        props:{
+            cateNavList:{
+                type:Array,
+                required:true
             }
         },
-        async mounted(){
-            let result = await this.$API.getCategoryNavList()
-            this.cateNavList=result.categoryNavList
-            this.$route.params.id!=this.cateNavList[0].id&& this.$router.push(`/category/right/${this.cateNavList[0].id}`)
+        data(){
+            return {
+                navIndex:0
+               
+            }
         }
     };
 </script>

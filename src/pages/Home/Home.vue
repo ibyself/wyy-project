@@ -1,13 +1,10 @@
 <template>
-    <div id="homeContainer" v-if="homeData">
-		<div v-if="homeData.kingKongModule">
-			<HeaderNav :nvList="homeData.kingKongModule.kingKongList"/>
-		</div>
-		
-		<div class="homeContentWrap">
+    <div id="homeContainer" v-if="homeData.kingKongModule">
+		<HeaderNav :nvList="homeData.kingKongModule.kingKongList"/>
+		<div class="homeContentWrap" ref="homeWrap">
 			<div class="homeContent">
 				<!-- 轮播图 -->
-				<div class="swiper-container">
+				<div class="swiper-container" ref="swiperWrap">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide" v-for="(item,index) in imgsList" :key="index">
 							<img :src="item" alt="">
@@ -198,23 +195,28 @@
 				this.homeScroll.scrollTo(0,0,1000)
 			},
 			_initScroll(){
-				if(this.homeScroll){
-					this.homeScroll.refresh()
-				}else{
-					this.homeScroll = new BScroll('.homeContentWrap',{
-						scrollY:true,
-						click:true
-					})
-					this.homeScroll.on('scroll',({x,y})=>{
-						this.scrollY=Math.abs(y)
-					})
-					this.homeScroll.on('scrollEnd',({x,y})=>{
-						this.scrollY=Math.abs(y)
-					})
+				if(this.$refs.homeWrap){
+					if(this.homeScroll){
+						this.homeScroll.refresh()
+					}else{
+						this.homeScroll = new BScroll(this.$refs.homeWrap,{
+							scrollY:true,
+							click:true
+						})
+						this.homeScroll.on('scroll',({x,y})=>{
+							this.scrollY=Math.abs(y)
+						})
+						this.homeScroll.on('scrollEnd',({x,y})=>{
+							this.scrollY=Math.abs(y)
+						})
+					}
 				}
 			},
 			_initSwiper(){
-				new Swiper('.swiper-container', {
+				if(!this.$refs.swiperWrap){
+					return 
+				}
+				new Swiper(this.$refs.swiperWrap, {
 					autoplay: true,//可选选项，自动滑动
 					loop:true,
 					pagination: {
@@ -236,12 +238,16 @@
 				})
 			}
 		},
-        async mounted(){	
+		async created(){
 			await this.$store.dispatch('reqHomeData')
-			if(this.homeData){
+			this.$nextTick(()=>{
 				this._initScroll()
 				this._initSwiper()
-			}		
+			})
+		},
+        mounted(){	
+			
+					
 		},
 		computed:{
 			...mapState({
@@ -385,6 +391,9 @@
 								width 258px 
 								height 257px
 								margin 60px auto
+								img 
+									width 100%
+									height 100%
 						.right 
 							width 343px 
 							height 438px
@@ -598,8 +607,9 @@
 												padding 0 8px
 												color red
 												font-size 18px
-												border 1px solid red
+												border 2px solid red
 												border-radius .2rem
+												margin-bottom 4px
 										.bigTitle
 											color #333
 											font-size 28px
@@ -652,7 +662,7 @@
 				
 				
 				.ft-wrap
-					border-top: 1px solid rgba(0,0,0,.15)
+					border-top: 2px solid rgba(0,0,0,.15)
 					background-color #414141
 					.ft-content
 						padding 54px 20px 28px
@@ -664,7 +674,7 @@
 								width 172px
 								line-height 62px
 								font-size 24px
-								border: 1px solid #999
+								border: 2px solid #999
 								color #fff
 								border-radius 4px
 								&:first-child

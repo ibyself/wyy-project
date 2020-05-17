@@ -1,5 +1,5 @@
 <template>
-    <div id="cateRightWrap">
+    <div id="cateRightWrap" ref="rightWrap">
         <div class="cateRightContainer" v-if="categoryObj">
             <div class="bannerWrap">
                 <img :src="categoryObj.imgUrl" alt="">
@@ -38,22 +38,26 @@
         },
         methods:{
             _initScroll(){
-                if(this.rightScroll){
-                    this.rightScroll.refresh()
-                }else{
-                    this.rightScroll=new BScroll('#cateRightWrap',{
-                        scrollY:true,
-                        click:true
-                    })
+                if(this.$refs.rightWrap){
+                    if(this.rightScroll){
+                        this.rightScroll.refresh()
+                    }else{
+                        this.rightScroll=new BScroll(this.$refs.rightWrap,{
+                            scrollY:true,
+                            click:true
+                        })
+                    }
                 }
+                
                 
             }
         },
-        async mounted(){
+        async created(){
             this.categoryList = await this.$API.getCategoryList()
-
             this.categoryObj=this.categoryList.find((item,index)=>this.$route.params.id*1===item.id)
-            this._initScroll()
+            this.$nextTick(()=>{
+                this._initScroll()
+            })
         },
         watch:{
             $route(){
@@ -75,6 +79,9 @@
                 width 100%
                 height 192px
                 margin-bottom .4rem
+                img 
+                    width 100%
+                    height 100%
             .listWrap,.content
                 .contentList
                     display flex
