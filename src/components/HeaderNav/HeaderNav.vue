@@ -7,7 +7,7 @@
           <i class="icon-search"></i>
           <span>搜索商品, 共25372款好物</span>
         </div>
-        <button class="login">登录</button>
+        <button class="login" @click="$router.push('/personal')">登录</button>
       </div>
       <div class="headerNav">
         <div class="navWrap" v-show="!isNavShow">
@@ -69,7 +69,6 @@
             click:true
           })
         }
-        
       }
     },
     mounted(){

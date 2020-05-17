@@ -8,7 +8,10 @@ const CateRight=()=>import('../pages/CateRight/CateRight.vue')
 export default [
     {
         path:'/home',
-        component:Home
+        component:Home,
+        meta:{
+            isShowFooterNav:true
+        }
     },
     {
         path:'/category',
@@ -16,25 +19,43 @@ export default [
         children:[
             {
                 path:'/category/right/:id',
-                component:CateRight
+                component:CateRight,
+                meta:{
+                    isShowFooterNav:true
+                }
             }
-        ]
+        ],
+        meta:{
+            isShowFooterNav:true
+        }
     },
     {
         path:'/topic',
-        component:Topic
+        component:Topic,
+        meta:{
+            isShowFooterNav:true
+        }
     },
     {
         path:'/cart',
-        component:Cart
+        component:Cart,
+        meta:{
+            isShowFooterNav:true
+        }
     },
     {
         path:'/personal',
-        component:Personal
+        component:Personal,
+        meta:{
+            isShowFooterNav:false
+        }
     },
     {
         path:'/search',
-        component:Search
+        component:Search,
+        meta:{
+            isShowFooterNav:false
+        }
     },
     {
         path:'/',

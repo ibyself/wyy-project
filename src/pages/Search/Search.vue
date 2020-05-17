@@ -1,5 +1,5 @@
 <template>
-    <div id="searchContainer">
+    <div id="searchContainer" v-if="hotSearchList">
         <div class="search" >
             <div class="search_input" v-if="hotSearchList.defaultKeyword">
                 <label for="search-keyword" class="labelWrap">
@@ -126,11 +126,11 @@
                     margin 0 32px 32px 0
                     padding 0 15px
                     line-height 47px
-                    border 1px solid #999
+                    border 2px solid #999
                     border-radius 4px
                     color #333
                     &.active 
-                        border 1px solid red
+                        border 2px solid red
                         color red
         .searchList
             .sItem
@@ -139,7 +139,7 @@
                 display flex
                 align-items center
                 &:not(:first-child)
-                    border-top 1px solid #d9d9d9
+                    border-top 2px solid #d9d9d9
                 a
                     display block
                     overflow hidden
