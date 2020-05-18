@@ -4,16 +4,22 @@
             <img src="https://yanxuan.nosdn.127.net/39c5e4583753d4c3cb868a64c2c109ea.png" alt="">
         </div>
         <div class="login-form">
-            <div class="input-mail">
-                <label for="mail">
-                    <input type="text" id="mail" placeholder="邮箱账号">
-                </label>
-            </div>
-            <div class="input-pwd">
-                <label for="pwd">
-                    <input type="password" id="pwd" placeholder="密码">
-                </label>
-            </div>
+            <validation-provider  rules="required|email" v-slot="{ errors }">
+                <div class="input-mail">
+                    <label for="mail">
+                        <input type="text" v-model="email" name="email" id="mail" placeholder="邮箱账号">
+                    </label>
+                </div>
+                <p class="tips">{{errors[0]}}</p>
+            </validation-provider>
+            <validation-provider  rules="required" v-slot="{ errors }">
+                <div class="input-pwd">
+                    <label for="pwd">
+                        <input type="password" v-model="pwd" id="pwd" name="password" placeholder="密码">
+                    </label>
+                </div>
+                <p class="tips">{{errors[0]}}</p>
+            </validation-provider>
             <div class="login-help">
                 <span class="help-left">注册账号</span>
                 <span class="help-right">忘记密码</span>
@@ -29,8 +35,17 @@
 </template>
 
 <script  type="text/ecmascript-6">
+    import { ValidationProvider } from 'vee-validate'
     export default {
-
+        data(){
+            return {
+                email:'',
+                pwd:''
+            }
+        },
+        components:{
+            ValidationProvider
+        }
     };
 </script>
 
@@ -60,6 +75,11 @@
                         line-height .6rem
                         outline none
             
+            .tips
+                color red
+                font-size .4rem
+                line-height 32px
+                margin-top -32px
             .input-pwd
                 justify-content space-between
                 label
