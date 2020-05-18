@@ -19,11 +19,10 @@
                 <span class="help-left">遇到问题?</span>
                 <span class="help-right">使用密码验证登录</span>
             </div>
-            <div class="login-btn">登陆</div>
+            <div class="login-btn">登录</div>
             <div class="clause">
-                
-                <label for="cbox" class="cbox">
-                    <input type="checkbox" id="cbox">
+                <label for="cbox">
+                    <input type="checkbox" class="cbox" name="cbox" id="cbox">
                     <span class="text">我同意</span>
                     <a href="javascript:;">《服务条款》</a>
                     <span class="text">和</span>
@@ -31,7 +30,7 @@
                 </label>
             </div>
         </div>
-        <div class="footer">
+        <div class="footer" @click="$router.push('/personal')">
             <span class="text">其他登录方式</span>
             <i class="r-arrow"></i>
         </div>
@@ -54,7 +53,7 @@
             img
                 width 268px
         .login-form
-            padding 0 40px
+            padding 40px 40px 0
             width 670px
             .input-phone,.input-pwd
                 height 90px
@@ -84,4 +83,51 @@
                     border-radius 4px
                     border 2px solid #D4D4D4
                     background-color #fff
+            .login-help
+                height 42px
+                display flex
+                color #333
+                line-height 42px
+                font-size 28px
+                justify-content space-between 
+                margin-bottom 32px 
+                .help-left 
+                    color #7f7f7f
+            .login-btn
+                hegiht 90px
+                background-color #DD1A21
+                text-align center
+                line-height 90px
+                font-size 28px
+                color #fff
+                border-radius 6px
+                margin-bottom 20px
+            .clause
+                height 48px
+                color #7f7f7f
+                font-size 24px
+                display flex
+                align-items center              
+                label
+                    display flex
+                    align-items center
+  
+                    .text 
+                        margin-left 10px
+                    a
+                        color #007AFF
+        .footer
+            margin-top 46px
+            font-size 28px
+            color #333
+            display flex
+            align-items center
+            justify-content center
+            .r-arrow
+                display inline-block
+                width 28px
+                height 28px
+                margin-left 4px
+                background url('https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-right3-6264a71cf0.png?imageView&type=webp') no-repeat center
+                background-size 28px 28px
 </style>

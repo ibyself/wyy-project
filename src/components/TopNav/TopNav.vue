@@ -31,13 +31,15 @@
         top 0
         width 100%
         height 100px
+        border-bottom 2px solid #eee
+        background-color #fafafa
         .headerNav
             height 100px
             padding 0 26px 0 24px
             display  flex
             align-items center
             justify-content space-between
-            background-color #fff
+            
             position relative
             .toHome
                 width 46px
