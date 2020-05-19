@@ -6,20 +6,22 @@
         <div class="login-form">
             <div class="input-phone">
                 <label for="phone">
-                    <input type="text" id="phone" placeholder="请输入手机号">
+                    <input type="text" maxlength="11" id="phone" v-model="phone" placeholder="请输入手机号">
                 </label>
             </div>
-            <div class="input-pwd">
-                <label for="pwd">
-                    <input type="password" id="pwd" placeholder="请输入短信验证码">
+            <p class="tips">{{phoneTips}}</p>
+            <div class="input-code">
+                <label for="code">
+                    <input type="text" id="code" v-model="code" placeholder="请输入短信验证码">
                 </label>
                 <a href="javascript:;" class="getCode">获取验证码</a> 
             </div>
+            <p class="tips">{{codeTips}}</p>
             <div class="login-help">
                 <span class="help-left">遇到问题?</span>
                 <span class="help-right">使用密码验证登录</span>
             </div>
-            <div class="login-btn">登录</div>
+            <div class="login-btn" @click="toLogin">登录</div>
             <div class="clause">
                 <label for="cbox">
                     <input type="checkbox" class="cbox" name="cbox" id="cbox">
@@ -39,7 +41,44 @@
 
 <script  type="text/ecmascript-6">
     export default {
-
+        data(){
+            return {
+                phone:'',
+                code:'',
+                phoneTips:'',
+                codeTips:''
+            }
+        },
+        watch:{
+            phone:{
+                handler (newUser,oldUser){
+                        if(/^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/.test(newUser)){
+                            this.phoneTips=''
+                        }else{
+                            this.phoneTips='请输入正确的手机号'
+                        }
+                        
+                  
+                }
+            },
+            code:{
+                handler (newUser,oldUser){    
+                    if(/^[0-9]{6}$/.test(newUser)){
+                        this.codeTips=''
+                    }else{
+                        this.codeTips='请输入正确的验证码'
+                    }
+                  
+                }
+            }
+        },
+        methods:{
+            toLogin(){
+                if(this.phoneTips===''&&this.codeTips===''){
+                    alert('登录成功!')
+                }
+            }
+        }
     };
 </script>
 
@@ -55,7 +94,7 @@
         .login-form
             padding 40px 40px 0
             width 670px
-            .input-phone,.input-pwd
+            .input-phone,.input-code
                 height 90px
                 display flex
                 align-items center
@@ -68,8 +107,13 @@
                         font-size .4rem
                         line-height .6rem
                         outline none
-            
-            .input-pwd
+            .tips
+                color red
+                font-size .4rem
+                line-height 32px
+                margin-top -30px
+                min-height 32px
+            .input-code
                 justify-content space-between
                 label
                     width 380px

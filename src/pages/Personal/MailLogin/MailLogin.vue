@@ -3,30 +3,31 @@
         <div class="top-login">
             <img src="https://yanxuan.nosdn.127.net/39c5e4583753d4c3cb868a64c2c109ea.png" alt="">
         </div>
-        <div class="login-form">
-            <validation-provider  rules="required|email" v-slot="{ errors }">
-                <div class="input-mail">
-                    <label for="mail">
-                        <input type="text" v-model="email" name="email" id="mail" placeholder="邮箱账号">
-                    </label>
+        <ValidationObserver ref="form">
+            <div class="login-form">
+                <validation-provider name="邮箱"  rules="required|email" v-slot="{ errors }">
+                    <div class="input-mail">
+                        <label for="mail">
+                            <input type="text" v-model="email"  id="mail" placeholder="邮箱账号">
+                        </label>
+                    </div>
+                    <p class="tips">{{errors[0]}}</p>
+                </validation-provider>
+                <validation-provider name="密码"  rules="required" v-slot="{ errors }">
+                    <div class="input-pwd">
+                        <label for="pwd">
+                            <input type="password" v-model="pwd" id="pwd"  placeholder="密码">
+                        </label>
+                    </div>
+                    <p class="tips">{{errors[0]}}</p>
+                </validation-provider>
+                <div class="login-help">
+                    <span class="help-left">注册账号</span>
+                    <span class="help-right">忘记密码</span>
                 </div>
-                <p class="tips">{{errors[0]}}</p>
-            </validation-provider>
-            <validation-provider  rules="required" v-slot="{ errors }">
-                <div class="input-pwd">
-                    <label for="pwd">
-                        <input type="password" v-model="pwd" id="pwd" name="password" placeholder="密码">
-                    </label>
-                </div>
-                <p class="tips">{{errors[0]}}</p>
-            </validation-provider>
-            <div class="login-help">
-                <span class="help-left">注册账号</span>
-                <span class="help-right">忘记密码</span>
+                <div class="login-btn" @click="toLogin">登录</div>
             </div>
-            <div class="login-btn">登录</div>
-            
-        </div>
+        </ValidationObserver>
         <div class="footer" @click="$router.push('/personal')">
             <span class="text">其他登录方式</span>
             <i class="r-arrow"></i>
@@ -35,8 +36,9 @@
 </template>
 
 <script  type="text/ecmascript-6">
-    import { ValidationProvider } from 'vee-validate'
+    import { ValidationProvider ,ValidationObserver} from 'vee-validate'
     export default {
+        // name:"mailLogin",
         data(){
             return {
                 email:'',
@@ -44,7 +46,18 @@
             }
         },
         components:{
-            ValidationProvider
+            ValidationProvider,
+            ValidationObserver
+        },
+        methods:{
+            toLogin(){
+                this.$refs.form.validate().then(result=>{
+                    if(result){
+                        alert('登录成功!')
+                        this.$router.push('/home')
+                    }
+                })
+            }
         }
     };
 </script>
@@ -79,7 +92,8 @@
                 color red
                 font-size .4rem
                 line-height 32px
-                margin-top -32px
+                margin-top -30px
+                min-height 32px
             .input-pwd
                 justify-content space-between
                 label
