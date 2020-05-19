@@ -238,16 +238,12 @@
 				})
 			}
 		},
-		async created(){
+		async mounted(){
 			await this.$store.dispatch('reqHomeData')
 			this.$nextTick(()=>{
 				this._initScroll()
 				this._initSwiper()
 			})
-		},
-        mounted(){	
-			
-					
 		},
 		computed:{
 			...mapState({

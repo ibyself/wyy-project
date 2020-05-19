@@ -47,16 +47,13 @@
                 
             }
         },
-        async created(){
+        async mounted(){
             let result = await this.$API.getCategoryNavList()
             this.cateNavList=result.categoryNavList
             this.$route.params.id!=this.cateNavList[0].id && this.$router.push(`/category/right/${this.cateNavList[0].id}`)
             this.$nextTick(()=>{
                 this._initScroll()
             })
-        },
-        mounted(){
-            
         }
     };
 </script>

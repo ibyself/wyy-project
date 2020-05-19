@@ -52,7 +52,7 @@
                 
             }
         },
-        async created(){
+        async mounted(){
             this.categoryList = await this.$API.getCategoryList()
             this.categoryObj=this.categoryList.find((item,index)=>this.$route.params.id*1===item.id)
             this.$nextTick(()=>{

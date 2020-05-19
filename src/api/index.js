@@ -13,3 +13,6 @@ export const getCategoryNavList=()=>ajax('/api/categoryNavList')
 
 //获取分类数据
 export const getCategoryList=()=>ajax('/api/categoryList')
+
+//获取toPic导航
+export const getTopicNavList=()=>ajax('/wy/topic/v1/know/navWap.json')
