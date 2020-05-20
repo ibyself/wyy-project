@@ -60,27 +60,26 @@
                 })
             }
         },
-        async created(){
+        async mounted(){
             let result= await this.$API.getTopicNavList()
             let arr=_.chunk(result.data.navList,8) 
             this.navList=arr[0].map((item,index)=>[item,arr[1][index]])
             this.$nextTick(()=>{
                 this._initSwiper()
             })
-        },
-        mounted(){
-            
         }
     }
 </script>
 
 <style lang='stylus' rel='stylesheet/stylus' scoped>
     .m-swiperTab
-        position relative
+        position absolute
+        top 1.85rem
+        left 50%
         z-index 2
         width 710px
         background-color #fff
-        margin 0 auto
+        margin-left -355px
         border-radius .16rem
         .swiper-container
             height 540px

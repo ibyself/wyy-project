@@ -5,15 +5,16 @@
                 <div class="header-title">值得买</div>
             </template>
         </TopNav>
-        <div class="toPicWrap">
-            <div class="toPicContent" ref="toPic">
+        <div class="toPicWrap" ref="toPic">
+            <div class="toPicContent">
                 <div class="m-swiperWrap">
                     <div class="m-swiperTitle">
                         <img src="https://m.you.163.com/topic/index/img/topic_logo.c2284970.png" alt="">
                         <div class="text">严选好物&nbsp;用心生活</div>
                     </div>
+                    <TopicNavList/>
                 </div>
-                <TopicNavList/>
+                <Waterfall :waterfallData="waterfallData" :recAutoData="recAutoData"/>
             </div>
         </div>
     </div>
@@ -22,17 +23,21 @@
 
 <script  type="text/ecmascript-6">
     import Bscroll from 'better-scroll'
+    import {mapState} from 'vuex'
     import TopNav from '../../components/TopNav/TopNav'
     import TopicNavList from './TopicNavList/TopicNavList'
+    import Waterfall from './Waterfall/Waterfall'
     export default {
         data(){
             return {
-                title:'值得买'
+                title:'值得买',
+                page:1
             }
         },
         components:{
             TopNav,
-            TopicNavList
+            TopicNavList,
+            Waterfall
         },
         methods:{
             _initScroll(){
@@ -49,8 +54,19 @@
                 }
             }
         },
-        mounted(){
+        async mounted(){
+            await this.$store.dispatch('reqWterfallData')
+            await this.$store.dispatch('reqRecAutoData',{page:this.page,size:5})
 
+            this.$nextTick(()=>{
+                this._initScroll()
+            })
+        },
+        computed:{
+            ...mapState({
+                waterfallData:state=>state.topic.waterfallData,
+                recAutoData:state=>state.topic.recAutodata
+            })
         }
     };
 </script>
@@ -67,6 +83,7 @@
                 .m-swiperWrap
                     padding-top 144px
                     position relative
+                    height 550px
                     .m-swiperTitle
                         position absolute
                         top 0

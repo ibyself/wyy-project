@@ -7,12 +7,14 @@ import getters from './getters'
 import home from './modules/home'
 import search from './modules/search'
 import category from './modules/category'
+import topic from './modules/topic'
 Vue.use(Vuex)
 export default new Vuex.Store({
     modules:{
         home,
         search,
-        category
+        category,
+        topic
     },
     state,
     mutations,

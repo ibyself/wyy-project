@@ -33,6 +33,7 @@
         height 100px
         border-bottom 2px solid #eee
         background-color #fafafa
+        z-index 100
         .headerNav
             height 100px
             padding 0 26px 0 24px

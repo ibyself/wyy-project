@@ -16,3 +16,12 @@ export const getCategoryList=()=>ajax('/api/categoryList')
 
 //获取toPic导航
 export const getTopicNavList=()=>ajax('/wy/topic/v1/know/navWap.json')
+
+//topic data
+export const getManual=()=>ajax('/wy/topic/v1/find/recManual.json')
+
+//上拉加载数据
+export const getRecAuto=(page,size,exceptIds='109891,13563,112934')=>ajax({
+    url:'/wy/topic/v1/find/recAuto.json',
+    params:{page,size,exceptIds}
+})
