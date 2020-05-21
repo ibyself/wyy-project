@@ -14,7 +14,7 @@
                     </div>
                     <TopicNavList/>
                 </div>
-                <Waterfall :waterfallData="waterfallData" :recAutoData="recAutoData"/>
+                <Waterfall :waterfallData="waterfallData"/>
             </div>
         </div>
     </div>
@@ -49,8 +49,16 @@
                 }else{
                     this.toPicScroll=new Bscroll(this.$refs.toPic,{
                         scrollY:true,
-						click:true
+                        click:true,
+                        pullUpLoad:true,
+                        probeType:2
                     })
+                    this.toPicScroll.on('pullingUp',async()=>{
+                        this.page++
+                        await this.$store.dispatch('reqRecAutoData',{page:this.page,size:5})
+                        this.toPicScroll.finishPullUp()
+                    })
+
                 }
             }
         },
@@ -65,7 +73,6 @@
         computed:{
             ...mapState({
                 waterfallData:state=>state.topic.waterfallData,
-                recAutoData:state=>state.topic.recAutodata
             })
         }
     };
@@ -73,11 +80,14 @@
 
 <style lang='stylus' rel='stylesheet/stylus' scoped>
     #toPicContainer
-        height calc(100vh - 186px)
+        height 100%
+        overflow hidden
         margin-top 100px
         .toPicWrap
             width 100%
-            height 100%
+            
+            height calc(100vh - 186px)
+            margin-top 100px
             .toPicContent
                 background-color #eee
                 .m-swiperWrap

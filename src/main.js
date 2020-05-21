@@ -5,6 +5,9 @@ import router from './router'
 import store from './store'
 import * as API from './api'
 import './common/validate'
+import loadingGIF from './common/img/loading.gif'
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad,{loading:loadingGIF})
 Vue.config.productionTip = false
 Vue.prototype.$API=API
 new Vue({

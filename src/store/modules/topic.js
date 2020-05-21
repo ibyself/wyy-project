@@ -19,7 +19,6 @@ const actions={
     },
     async reqRecAutoData({commit},{page,size}){
         let result=await getRecAuto(page,size)
-        console.log(result.data.result)
         commit(Get_RECAUTO_DATA,result.data.result)
     }
 }
