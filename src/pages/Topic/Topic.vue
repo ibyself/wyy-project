@@ -85,9 +85,7 @@
         margin-top 100px
         .toPicWrap
             width 100%
-            
             height calc(100vh - 186px)
-            margin-top 100px
             .toPicContent
                 background-color #eee
                 .m-swiperWrap

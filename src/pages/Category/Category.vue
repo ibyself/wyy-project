@@ -1,7 +1,7 @@
 <template>
     <div id="categoryContainer" v-if="cateNavList">
         <div class="cateHeader">
-           <div class="headerSearch">
+           <div class="headerSearch" @click="$router.push('/search')">
                 <i class="icon-search"></i>
                 <span class="text">搜索商品, 共26849款好物</span>
            </div>

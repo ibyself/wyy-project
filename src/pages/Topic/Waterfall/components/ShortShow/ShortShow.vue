@@ -1,6 +1,6 @@
 <template>
     <div class="short_box" >
-        <div class="short_cont" v-for="(topic,index) in topicData" :key="index">
+        <div class="short_cont">
             <div class="imgWrap">
                 <img v-if="topic.newAppBanner" v-lazy="topic.newAppBanner" :src="topic.newAppBanner" alt="">
                 <img v-else :src="topic.picUrl" v-lazy="topic.picUrl" alt="">
@@ -23,27 +23,11 @@
 <script  type="text/ecmascript-6">
     export default {
         props:{
-            topics:{
+            topic:{
                 type:Object
             }
-        },
-        data(){
-            return {
-                topicData:[]
-            }
-        },
-        mounted(){
-            this.topics.topics.map((item,index)=>{
-                this.topicData.push(item)
-            })
-        },
-        watch:{
-            topics:function(newData,oldData){
-                newData.topics.map((item,index)=>{
-                    this.topicData.push(item)
-                })
-            }
         }
+        
     };
 </script>
 
