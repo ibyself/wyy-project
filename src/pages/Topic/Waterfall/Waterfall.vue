@@ -10,7 +10,6 @@
 
 <script  type="text/ecmascript-6">
     import {mapState} from 'vuex'
-    import Masonry from 'masonry-layout'
     import ShortShow from './components/ShortShow/ShortShow'
     export default {
         data(){
@@ -27,15 +26,7 @@
             ShortShow
         },
         methods:{
-            _initMasonry(){
-                if(this.$refs.waterWrap){
-                    return
-                }
-                new Masonry(this.$refs.waterWrap,{
-                    itemSelector: '.waterItem',
-                    gutter:26
-                })
-            }
+            
         },
         updated(){
             this._initMasonry()
@@ -46,9 +37,8 @@
             }),
             newRecAutoData(){
                 let arr=this.waterfallData.concat(this.recAutoData)
-                // console.log(this.recAutoData)
                 let result=this.recAutoData.map((item,index)=>item.topics)
-                result=result.forEach((item,index)=>{
+                result.forEach((item,index)=>{
                     item.forEach((topic,index)=>{
                         this.newData.push(topic)
                     })
