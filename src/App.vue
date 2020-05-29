@@ -20,5 +20,5 @@
     height 100vh
     background-color #eee 
     position relative
-    
+    overflow hidden
 </style>

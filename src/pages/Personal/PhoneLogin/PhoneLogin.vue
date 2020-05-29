@@ -24,7 +24,7 @@
             <div class="login-btn" @click="toLogin">登录</div>
             <div class="clause">
                 <label for="cbox">
-                    <input type="checkbox" class="cbox" name="cbox" id="cbox">
+                    <input type="checkbox" ref="ckbox" class="cbox" name="cbox" id="cbox">
                     <span class="text">我同意</span>
                     <a href="javascript:;">《服务条款》</a>
                     <span class="text">和</span>
@@ -74,8 +74,11 @@
         },
         methods:{
             toLogin(){
-                if(this.phoneTips===''&&this.codeTips===''){
+                if(this.phoneTips===''&& this.codeTips==='' && this.$refs.ckbox.checked){
                     alert('登录成功!')
+                    this.$router.push('/home')
+                }else if(!this.$refs.ckbox.checked){
+                    alert('请先勾选相关服务条款!')
                 }
             }
         }

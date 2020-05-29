@@ -1,20 +1,25 @@
 <template>
     <div id="waterfall_box">
-        <ul class="waterfall_cont" ref="waterWrap">
-            <li class="waterItem" v-for="(topic,index) in newRecAutoData" :key="index">
+        <waterfall :col='col' :width="itemWidth" :gutterWidth="gutterWidth"  :data="newRecAutoData"  @loadmore="loadmore" :loadDistance="20" :lazyDistance="20">
+            <div class="waterItem" v-for="(topic,index) in newRecAutoData" :key="index">
                 <ShortShow :topic="topic"/>
-            </li>
-        </ul>
+            </div>
+        </waterfall>
+           
+        
+         
     </div>
 </template>
 
 <script  type="text/ecmascript-6">
     import {mapState} from 'vuex'
+    
     import ShortShow from './components/ShortShow/ShortShow'
     export default {
         data(){
             return {
-                newData:[]
+                newData:[],
+                col:2
             }
         },
         props:{
@@ -23,13 +28,20 @@
             }
         },
         components:{
-            ShortShow
+            ShortShow,
         },
         methods:{
-            
-        },
-        updated(){
-            this._initMasonry()
+            scroll(scrollData){
+                console.log(scrollData)
+            },
+            switchCol(col){
+                this.col = col
+                console.log(this.col)
+            },
+            loadmore(index){
+                    this.newData = this.newData.concat(this.newData)
+            }
+	    
         },
         computed:{
             ...mapState({
@@ -45,26 +57,22 @@
                 })
                 return this.newData
                 
+            },
+            itemWidth(){  
+	            return (684*0.5*(document.documentElement.clientWidth/750))  
+            },
+            gutterWidth(){
+                return (52*0.5*(document.documentElement.clientWidth/750))	
             }
         }
     };
 </script>
 
-<style lang='stylus' rel='stylesheet/stylus' scoped>
+<style lang='stylus' rel='stylesheet/stylus'>
     #waterfall_box
-        width 100%
-        display flex
-        justify-content center
-        .waterfall_cont
-            width 710px
-            column-count 2
-            column-gap 26px
-            .waterItem
-                width 342px
-                float left
-                border-radius .24rem
-                margin-bottom 26px
-                break-inside avoid
+        width 710px
+        margin 0 auto
+        
                 
                 
                     

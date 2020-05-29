@@ -14,7 +14,7 @@
                     </div>
                     <TopicNavList/>
                 </div>
-                <Waterfall :waterfallData="waterfallData"/>
+                <TopicList :waterfallData="waterfallData"/>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
     import {mapState} from 'vuex'
     import TopNav from '../../components/TopNav/TopNav'
     import TopicNavList from './TopicNavList/TopicNavList'
-    import Waterfall from './Waterfall/Waterfall'
+    import TopicList from './TopicList/TopicList'
     export default {
         data(){
             return {
@@ -37,7 +37,7 @@
         components:{
             TopNav,
             TopicNavList,
-            Waterfall
+            TopicList
         },
         methods:{
             _initScroll(){
@@ -78,9 +78,9 @@
     };
 </script>
 
-<style lang='stylus' rel='stylesheet/stylus' scoped>
+<style lang='stylus' rel='stylesheet/stylus'>
     #toPicContainer
-        height 100%
+        height calc(100vh - 100px)
         overflow hidden
         margin-top 100px
         .toPicWrap

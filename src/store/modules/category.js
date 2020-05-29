@@ -11,6 +11,7 @@ const mutations={
 const actions={
     async reqCategoryNavList({commit}){
         let result=await getCategoryNavList()
+        console.log(result)
         commit(GET_CATEGORY_NAV_LIST,result.categoryNavList)
     }
 }

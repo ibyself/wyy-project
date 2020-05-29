@@ -1,7 +1,7 @@
 <template>
     <div id="searchContainer" v-if="hotSearchList">
-        <div class="search" >
-            <div class="search_input" v-if="hotSearchList.defaultKeyword">
+        <div class="search"  v-if="hotSearchList.defaultKeyword">
+            <div class="search_input">
                 <label for="search-keyword" class="labelWrap">
                     <i class="search-icon"></i>
                     <input id="search-keyword" class="search-text" type="text" @keydown="handleSearch()" v-model="search_text" :placeholder="hotSearchList.defaultKeyword.keyword">
@@ -94,6 +94,7 @@
                     .search-text
                         line-height 39px
                         width 470px
+                        height 39px
                         background-color #f4f4f4
                         outline none
                     .search-icon
@@ -158,5 +159,5 @@
                         width 50px
                         height 50px
                         background-image url('https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/address-right-f33ab6b984.png?imageView&type=webp')
-
+                        background-size 100%
 </style>

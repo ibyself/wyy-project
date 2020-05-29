@@ -7,7 +7,7 @@
 				<div class="swiper-container" ref="swiperWrap">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide" v-for="(item,index) in imgsList" :key="index">
-							<img :src="item" alt="">
+							<img v-lazy="item" :src="item" alt="">
 						</div>
 					</div>
 					<!-- 如果需要分页器 -->
@@ -18,7 +18,7 @@
 					<ul class="list" v-if="homeData.policyDescList">
 						<li class="item" v-for="(item,index) in homeData.policyDescList" :key="index">
 							<a href="javascript:;">
-								<img class="icon" :src="item.icon"/>
+								<img v-lazy="item.icon" class="icon" :src="item.icon"/>
 								<span class="text">{{item.desc}}</span>
 							</a>
 						</li>
@@ -30,7 +30,7 @@
 					<ul class="navList" v-if="homeData.kingKongModule">
 						<li class="navItem" v-for="(nvtem,index) in homeData.kingKongModule.kingKongList" :key="index">
 							<a href="javascript:;">
-								<img :src="nvtem.picUrl" alt="">
+								<img v-lazy="nvtem.picUrl" :src="nvtem.picUrl" alt="">
 								<span class="text">{{nvtem.text}}</span>
 							</a>
 						</li>
@@ -62,7 +62,7 @@
 								</div>
 								<div class="picWrap">
 									<div class="imgWrap">
-										<img :src="item.showPicUrl" alt="">
+										<img v-lazy="item.showPicUrl" :src="item.showPicUrl" alt="">
 									</div>
 									<div class="discount">
 										<div class="line1">{{item.activityPrice}}</div>
@@ -86,7 +86,7 @@
 									<span class="text">{{item.categoryName}}</span>
 								</div>
 								<div class="item-img">
-									<img :src="item.showPicUrl" alt="">
+									<img v-lazy="item.showPicUrl" :src="item.showPicUrl" alt="">
 								</div>
 							</div>
 						</div>
@@ -106,7 +106,7 @@
 							<li class="recItem" v-for="(popItem,index) in homeData.popularItemList" :Key="index">
 								<a href="javascript:;" class="itemWrap">
 									<div class="itemImg">
-										<img :src="popItem.showPicUrl" alt="">
+										<img v-lazy="popItem.showPicUrl" :src="popItem.showPicUrl" alt="">
 									</div>
 									<div class="itemContent">
 										<div class="itemBtn" v-if="index==0">
@@ -136,7 +136,7 @@
 								<div class="small">{{shopItem.styleItem.desc}}</div>
 							</div>
 							<div class="imgList">
-								<img v-for="(item,index) in shopItem.styleItem.picUrlList" :key="index" :src="item" alt="">
+								<img v-for="(item,index) in shopItem.styleItem.picUrlList" v-lazy="item" :key="index" :src="item" alt="">
 								
 							</div>
 						</li>

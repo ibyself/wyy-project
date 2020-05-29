@@ -78,6 +78,6 @@ export default [
     },
     {
         path:'/',
-        redirect:'/topic'
+        redirect:'/home'
     }
 ]

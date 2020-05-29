@@ -1,13 +1,13 @@
 <template>
-    <div id="cateRightWrap" ref="rightWrap">
-        <div class="cateRightContainer" v-if="categoryObj">
+    <div id="cateRightWrap" v-if="categoryObj" ref="rightWrap">
+        <div class="cateRightContainer">
             <div class="bannerWrap">
-                <img :src="categoryObj.imgUrl" alt="">
+                <img v-lazy="categoryObj.imgUrl" :src="categoryObj.imgUrl" alt="">
             </div>
             <div class="listWrap" v-if="categoryObj.subCateList">
                 <ul class="contentList" >
                     <li class="cItem" v-for="(cateItem,index) in categoryObj.subCateList" :key="index">
-                        <img :src="cateItem.bannerUrl" alt="">
+                        <img v-lazy="cateItem.bannerUrl" :src="cateItem.bannerUrl" alt="">
                         <span>{{cateItem.name}}</span>
                     </li>
                 </ul>
@@ -17,7 +17,7 @@
                     <div class="contentTitle" >{{cateItem.itemTitle}}</div>
                     <ul class="contentList">
                         <li class="cItem" v-for="(item,index) in cateItem.itemList" :key="index">
-                            <img :src="item.wapBannerUrl" alt="">
+                            <img v-lazy="item.wapBannerUrl" :src="item.wapBannerUrl" alt="">
                             <span>{{item.name}}</span>
                         </li>
                     </ul>
@@ -53,8 +53,11 @@
             }
         },
         async mounted(){
-            this.categoryList = await this.$API.getCategoryList()
-            this.categoryObj=this.categoryList.find((item,index)=>this.$route.params.id*1===item.id)
+            let result = await this.$API.getCategoryList()
+            this.categoryList=result.data
+            if(this.categoryList){
+                this.categoryObj=this.categoryList.find((item,index)=>this.$route.params.id*1===item.id)
+            }
             this.$nextTick(()=>{
                 this._initScroll()
             })
