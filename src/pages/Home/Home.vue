@@ -261,6 +261,7 @@
 			height calc(100vh - 246px)
 			overflow hidden
 			.homeContent
+				margin-bottom 100px
 				.swiper-container
 					width 100vw
 					height 296px
