@@ -13,7 +13,7 @@
                     </div>
                     <p class="tips">{{errors[0]}}</p>
                 </validation-provider>
-                <validation-provider name="密码"  rules="required" v-slot="{ errors }">
+                <validation-provider name="密码"  rules="required|min:6|max:18" v-slot="{ errors }">
                     <div class="input-pwd">
                         <label for="pwd">
                             <input type="password" v-model="pwd" id="pwd"  placeholder="密码">

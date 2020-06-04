@@ -88,6 +88,7 @@
 
 <style lang='stylus' rel='stylesheet/stylus' scoped>
   #headerContainer
+    width 100%
     height 148px
     position fixed 
     left 0
